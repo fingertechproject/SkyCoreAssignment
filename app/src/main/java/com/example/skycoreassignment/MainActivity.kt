@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.SeekBar
 import android.widget.Toast
 import com.example.skycoreassignment.databinding.ActivityMainBinding
+import retrofit2.Call
 
 class MainActivity : AppCompatActivity() {
     lateinit var mBinding: ActivityMainBinding
@@ -36,5 +37,6 @@ class MainActivity : AppCompatActivity() {
     }
     private fun getData(num:Int?){
         Toast.makeText(this, num.toString(), Toast.LENGTH_SHORT).show()
+       /* val skyCore :Call<Model> = ApiService.*/
     }
 }

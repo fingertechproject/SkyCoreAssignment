@@ -20,13 +20,16 @@ interface ApiServiceInterface{
 
 }
 object ApiService {
-    // val apiService : ApiServiceInterface
+    // val instance : ApiServiceInterface
     init {
         val okHttpClient: OkHttpClient.Builder = OkHttpClient.Builder()
         okHttpClient.addInterceptor(object : Interceptor {
             override fun intercept(chain: Interceptor.Chain): Response {
                 val original: Request = chain.request()
                 val request = original.newBuilder()
+                    .url("https://api.yelp.com/v3/businesses/search?location=NYC&radius=500&sort_by=best_match&limit=20")
+                    .get()
+                    .addHeader("accept", "application/json")
                     .header("Authorization", API_KEY)
                     .method(original.method(), original.body())
                     .build()
